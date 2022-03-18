@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const BoatDetails = (props) => {
+  let navigate = useNavigate()
+  let { id } = useParams()
 
   const [selectedBoat, setBoat] = useState('')
 
   useEffect(() => {
-    
-  }, [])
+    let boat = props.boats.find(
+      (boat) => boat.id === parseInt(id)
+    )
+    setBoat(boat)
+  }, [props.boats, id])
+
+  const backToHomepage =(e) => {
+    console.log(e.key)
+    if  (e.key === "Backspace") {
+      navigate('/')
+    }
+  }
 
   return selectedBoat ? (
-    <div className="detail">
+    <div className="detail" tabIndex="0" onKeyDown={(e) => backToHomepage(e)}>
       <div className="detail-header">
         <img src={selectedBoat.img} alt={selectedBoat.name} />
         <div style={{minWidth: '30em', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>

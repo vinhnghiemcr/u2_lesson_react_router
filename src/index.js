@@ -1,15 +1,13 @@
-import React from 'react';
+import { BrowserRouter as Router  } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 // import BrowserRouter with { destructuring } here
 
 ReactDOM.render(
-  <React.StrictMode>
-    // Wrap our App component in BrowserRouter
+    <Router>
       <App />
-    // Wrap our App component in BrowserRouter
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 
